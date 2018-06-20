@@ -1,13 +1,9 @@
 import numpy as np
 import tensorflow as tf
-from constants import Nmax, training_iterations, num_coordinates
-
+from constants import Nmax, training_iterations, num_coordinates, dataset_directory
+from helpers import processData
 from rnn import SketchRNN
 
-
-def processData(name):
-	outputLabels = np.load("./{}-data-outputs.npy".format(name))
-	return np.load("./{}-data-inputs.npy".format(name)), outputLabels
 
 
 def trainNetwork():
