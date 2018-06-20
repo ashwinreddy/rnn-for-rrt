@@ -7,18 +7,19 @@ import random
 import math
 import copy
 import sys
-from data_gen import LinearInterpolationGenerator
+from data_gen import LinearInterpolationGenerator, RrtGenerator, QuadraticInterpolationGenerator
 
 
 
 
 def main(generatorType, Nmax, num_examples):
-	if generatorType == "linear":
-		trainingDataGenerator = LinearInterpolationGenerator
-	elif generatorType == "rrt":
-		trainingDataGenerator = RrtGenerator
-
-	trainingDataGenerator(Nmax).makeDataset(num_examples)
+	generatorTypes = {
+		"linear": LinearInterpolationGenerator,
+		"rrt": RrtGenerator,
+		"quadratic": QuadraticInterpolationGenerator
+	}
+	
+	generatorTypes[generatorType](Nmax).makeDataset(num_examples)
 
 
 if __name__ == "__main__":
