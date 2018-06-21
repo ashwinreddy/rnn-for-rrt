@@ -9,12 +9,12 @@ args = parser.parse_args()
 
 
 def main():
-	if args.train:
-		trainNetwork()
+        if args.train:
+                trainNetwork()
 
-	if args.test:
-		test()
+        if args.test:
+                test()
 
 
 if __name__ == "__main__":
-	main()
+        main()
