@@ -11,7 +11,7 @@ def test():
 		saver = tf.train.import_meta_graph("./saves/model.ckpt.meta")
 		saver.restore(sess, tf.train.latest_checkpoint("./saves/"))
 
-		steps = 2
+		steps = Nmax
 
 		results = network(
 			[[[0, 0, 5, 5, steps]] * Nmax]

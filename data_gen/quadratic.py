@@ -21,7 +21,7 @@ class QuadraticInterpolationGenerator(ExampleGenerator):
 
         for _ in range(num_examples):
             # endpoints = randint(0, 5, size=(1,4))
-            endpoints = np.array([[2, 1, 5, 5]])
+            endpoints = np.array([[0,0, 5, 5]])
             steps = randint(2, self.Nmax)
 
             start = endpoints[0,:2]
@@ -48,8 +48,10 @@ class QuadraticInterpolationGenerator(ExampleGenerator):
             f = interpolate.interp1d(x, y, kind='quadratic')
             xnew = np.linspace(start[0], goal[0], steps)
             plt.plot(xnew, f(xnew))
-            plt.show()
+            # plt.show()
 
-            break
+            trajectory = np.hstack((xnew.reshape((steps, 1)), f(xnew).reshape((steps, 1))))
 
-            # yield np.tile(np.append(endpoints, steps), (self.Nmax, 1)), trajectory
+            # print(np.diff(trajectory, axis=0))
+
+            yield np.tile(np.append(endpoints, steps), (self.Nmax, 1)), padSequence(np.diff(trajectory, axis=0), self.Nmax)
