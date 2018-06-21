@@ -8,4 +8,4 @@ num_coordinates = 2
 
 dataset_directory = lambda name, put: "./data/{}-data-{}".format(name, put)
 
-quadratic_step_size = 1
+quadratic_step_size = 0.5

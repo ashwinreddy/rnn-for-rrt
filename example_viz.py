@@ -4,8 +4,8 @@ import numpy as np
 
 trainingInputs, trainingOutputs = processData("training")
 
-# print(trainingInputs.shape)
-# print(trainingOutputs.shape)
+print(trainingInputs.shape)
+print(trainingOutputs.shape)
 
 exampleNumber = 0
 
@@ -14,7 +14,7 @@ end = trainingInputs[:,0,2:-1][exampleNumber]
 
 samples = np.vstack((start, np.cumsum(trainingOutputs[:,:,:-1], axis=1)[exampleNumber]+start))
 
-print(samples)
+# print(samples)
 
-# plt.plot(samples[:,0], samples[:,1])
-# plt.show()
+plt.plot(samples[:,0], samples[:,1])
+plt.show()

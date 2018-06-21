@@ -134,17 +134,17 @@ class RrtGenerator(ExampleGenerator):
 
 		for i in range(num_examples):
 
-			startAndEnd = randint(-10, 11, size=(1, 4))
+			endpoints = randint(-10, 11, size=(1, 4))
 
-			# startAndEnd = np.array([0,0, 5,5])
+			# endpoints = np.array([0,0, 5,5])
 
-			rrt = RRT(start=[startAndEnd[0, 0], startAndEnd[0, 1]], goal=[startAndEnd[0, 2], startAndEnd[0, 3]],
+			rrt = RRT(start=[endpoints[0, 0], endpoints[0, 1]], goal=[endpoints[0, 2], endpoints[0, 3]],
 					randArea=[-2, 10], obstacleList=obstacleList)
 			path = np.array(rrt.Planning(animation=False))
 			delta = np.diff(np.flip(path, 0).T).T
 			steps = len(delta)
 
-			points = np.tile(np.append(startAndEnd, steps), (Nmax, 1))
+			points = np.tile(np.append(endpoints, steps), (Nmax, 1))
 			trajectory = np.c_[delta, np.zeros((steps, 1))]
 			zeroed_out = np.tile([0, 0, 1], (Nmax - steps, 1))
 			trajectory = np.vstack((trajectory, zeroed_out))

@@ -68,13 +68,13 @@ class SketchRNN(object):
 			if i % 350 == 0:
 				print(i, error)
 
-				new_validation_cost = self.cost(validationData[0], validationData[1])
+				# new_validation_cost = self.cost(validationData[0], validationData[1])
 
-				if new_validation_cost >= validation_cost:
-					break
-				else:
-					self.saver.save(self.session, "./saves/model.ckpt")
-					validation_cost = new_validation_cost
+				# if new_validation_cost >= validation_cost:
+				# 	break
+				# else:
+				# 	self.saver.save(self.session, "./saves/model.ckpt")
+				# 	validation_cost = new_validation_cost
 		self.saver.save(self.session, "./saves/model.ckpt")
 
 	def restore(self):

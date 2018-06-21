@@ -1,5 +1,5 @@
 import numpy as np
-from constants import dataset_directory
+from constants import dataset_directory, Nmax
 
 numSteps = lambda seq: seq[:,2].tolist().index(1)
 
