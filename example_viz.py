@@ -15,6 +15,7 @@ end = trainingInputs[:,0,2:-1][exampleNumber]
 samples = np.vstack((start, np.cumsum(trainingOutputs[:,:,:-1], axis=1)[exampleNumber]+start))
 
 # print(samples)
+print("Endpoints: {}".format([start, end]))
 
 plt.plot(samples[:,0], samples[:,1])
 plt.show()

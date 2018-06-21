@@ -7,7 +7,6 @@ from scipy import interpolate
 import matplotlib.pyplot as plt
 
 def slope(p1, p2):
-    # print(p1, p2)
     difference  = p2 - p1
     return difference[1] / difference[0]
 
@@ -20,8 +19,8 @@ class QuadraticInterpolationGenerator(ExampleGenerator):
         examples = []
 
         for _ in range(num_examples):
-            # endpoints = randint(0, 5, size=(1,4))
-            endpoints = np.array([[0,0, 5, 5]])
+            # endpoints = np.random.rand(1, 4) * 6
+            endpoints = np.array([[0,0, np.random.rand() * 6, np.random.rand() * 6]])
             steps = randint(2, self.Nmax)
 
             start = endpoints[0,:2]
@@ -36,14 +35,13 @@ class QuadraticInterpolationGenerator(ExampleGenerator):
             # beginningSlope = slope(start, controlPoint)
             # endingSlope = slope(controlPoint, goal)
 
-            trajectory = np.array([ start, controlPoint - start, goal - controlPoint])
+            trajectory = np.array([ start, controlPoint, goal])
 
-            # trajectory = padSequence(trajectory, self.Nmax)
-
-            trajectory =   np.cumsum(trajectory, axis=0) 
 
             x = trajectory[:,0]
             y = trajectory[:,1]
+
+            # print(x)
 
             f = interpolate.interp1d(x, y, kind='quadratic')
             xnew = np.linspace(start[0], goal[0], steps)

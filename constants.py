@@ -1,8 +1,8 @@
-Nmax = 50
+Nmax = 25
 
-training_iterations = 3_000
+training_iterations = 5_000
 
-num_examples  = [300, 200, 100]
+num_examples  = [600, 500, 200]
 
 num_coordinates = 2
 
